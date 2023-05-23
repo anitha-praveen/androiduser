@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.rideConfirm.localPriceDetails.LocalFairDetailsBottomVM" />
+
+
+    </data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_bottom_sheet_icon" />
+
+    <TextView
+        android:id="@+id/txt_FareDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:text="@{viewModel.translationModel.txt_FareDetails}"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/clr_2F2E2E"
+        android:textSize="@dimen/_15sdp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:background="@drawable/ic_complaints_unselected_item_bg">
+
+        <ImageView
+            android:id="@+id/carImage"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_16sdp" />
+
+        <TextView
+            android:id="@+id/txt_vehicle_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:text="@{viewModel.translationModel.txt_vehicle_type}"
+            android:layout_toStartOf="@+id/carImage"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_636363"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            android:id="@+id/vehicle_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_vehicle_type"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:text="@{viewModel.type.typeName}"
+            android:layout_toStartOf="@+id/carImage"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/clr_616161"
+            android:textSize="@dimen/_15sdp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/txt_Basefare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:text="@{viewModel.translationModel.txt_Basefare}"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/baseFareValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.basePrice}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:textColor="@color/clr_525151"
+        android:text="@{viewModel.baseDistanceDesc}"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/_10sdp"/>
+
+    <RelativeLayout
+        android:id="@+id/rate_per_km_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="@{viewModel.type.computedPrice != null ? View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/txt_RateperKm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:text="@{viewModel.translationModel.txt_RateperKm}"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_RateperKm_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.ratePerKm}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/remainingDistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:textColor="@color/clr_525151"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@{viewModel.ratePerKmDesc}"
+        android:textSize="@dimen/_10sdp"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/text_distance_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/text_distance_cost_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/ride_time_charge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="@{viewModel.showPricePerTime?View.VISIBLE : View.GONE}">
+
+        <TextView
+            android:id="@+id/txt_Ridetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{viewModel.translationModel.txt_Ridetime}"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_Ridetime_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.pricePerTime}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/txt_waiting_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:text="@{viewModel.translationModel.txt_waiting_header}"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_waiting_header_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.waitingCharge}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/waitingTimeHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:textColor="@color/clr_525151"
+        android:text="@{viewModel.translationModel.txt_per_min_price}"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/_10sdp"/>
+
+    <RelativeLayout
+        android:id="@+id/zoneFeesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="@{viewModel.showOutZonePrice?View.VISIBLE:View.GONE}">
+
+        <TextView
+            android:id="@+id/text_zone_fees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@{viewModel.translationModel.text_zone_fees}"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/text_zone_fees_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@{viewModel.outZonePrice}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/hill_station_lay"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="@dimen/_10sdp">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/hill_fee"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="@dimen/_16sdp"-->
+<!--            android:fontFamily="@font/roboto_regular"-->
+<!--            android:textColor="@color/clr_525151"-->
+<!--            android:textSize="@dimen/_12sdp" />-->
+
+
+<!--        <TextView-->
+<!--            android:id="@+id/hill_fee_value"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginEnd="@dimen/_16sdp"-->
+<!--            android:fontFamily="@font/roboto_bold"-->
+<!--            android:textColor="@color/black"-->
+<!--            android:textSize="@dimen/_14sdp" />-->
+
+
+<!--    </RelativeLayout>-->
+
+    <RelativeLayout
+        android:id="@+id/promoLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:visibility="@{viewModel.isPromoApplied?View.VISIBLE:View.GONE}">
+
+        <TextView
+            android:id="@+id/txt_promo_bonus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:text="@{viewModel.translationModel.txt_promo_bonus}"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_promo_bonus_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.promoAmount}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/txt_booking_fees"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@{viewModel.translationModel.txt_booking_fee}"
+            android:textColor="@color/clr_525151"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_booking_fee_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@{viewModel.bookingFees}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_line_divider_fare_details" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/txt_Total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@{viewModel.translationModel.txt_Total}"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_15sdp" />
+
+
+        <TextView
+            android:id="@+id/txt_Total_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:text="@{viewModel.total}"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_17sdp" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center"
+                android:text="@{viewModel.translationModel.txt_note}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <TextView
+                android:id="@+id/txt_estimates_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="start"
+                android:text="@{viewModel.translationModel.txt_estimates_text}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_Gotit"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:background="@drawable/btn_primary"
+        android:fontFamily="@font/roboto_bold"
+        android:gravity="center"
+        android:text="@{viewModel.translationModel.txt_Gotit}"
+        android:onClick="@{()->viewModel.onClickGotIt()}"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="@dimen/_12sdp" />
+
+</LinearLayout>
+
+</layout>

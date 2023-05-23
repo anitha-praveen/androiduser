@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.cancelReasons.CancelReasonsVM" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/curved_border_top_white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/cancel_this_ride"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.translationModel.txt_cancel_this_ride}"
+                android:textAllCaps="true"
+                android:textColor="@color/clr_2F2E2E"
+                android:textSize="@dimen/_15sdp" />
+
+            <TextView
+                android:id="@+id/cancelation_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="@{viewModel.translationModel.txt_cancel_fee_applied}"
+                android:textColor="@color/clr_606060"
+                android:textSize="@dimen/_13sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/payment_method_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:fadeScrollbars="false"
+                android:scrollbarFadeDuration="0" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_16sdp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/clr_D9D9D9"
+                    android:fontFamily="@font/roboto_regular"
+                    android:onClick="@{()->viewModel.onclickDontCancel()}"
+                    android:text="@{viewModel.translationModel.no}"
+                    android:textColor="@color/buttonTextColor"
+                    app:cornerRadius="@dimen/_5sdp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onClickCancel()}"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{viewModel.translationModel.txt_yes}"
+                    android:textColor="@color/buttonTextColor"
+                    app:cornerRadius="@dimen/_5sdp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.favorites.addFavorite.AddFavoriteVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/clr_F7F9FC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    style="@style/Toolbar">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="?attr/actionBarSize">
+
+                        <ImageButton
+                            android:id="@+id/img_btn_back"
+                            android:layout_width="@dimen/_35sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:onClick="@{viewModel::onClickBack}"
+                            android:padding="5dp"
+                            app:srcCompat="@drawable/back_nav" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@+id/img_btn_back"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:gravity="center"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textSize="18sp"
+                            android:textColor="@color/clr_222B45"
+                            android:text="@{viewModel.translationModel.txt_save_fav_title}" />
+
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="0dp"
+                    app:cardUseCompatPadding="false"
+                    android:layout_marginTop="@dimen/_10sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:focusableInTouchMode="true">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingBottom="@dimen/_10sdp">
+
+                            <RadioGroup
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_centerInParent="true"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:background="@drawable/ic_custom_radio_selector"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@null"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:paddingStart="20dp"
+                                    android:paddingEnd="20dp"
+                                    android:drawableStart="@drawable/ic_fav_add_home"
+                                    android:drawablePadding="@dimen/_10sdp"
+                                    android:onClick="@{viewModel::onHomeClick}"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="15sp"
+                                    android:text="@{viewModel.translationModel.txt_Home}" />
+
+                                <RadioButton
+                                    android:background="@drawable/ic_custom_radio_selector"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@null"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:paddingStart="20dp"
+                                    android:paddingEnd="20dp"
+                                    android:layout_marginStart="@dimen/_12sdp"
+                                    android:drawableStart="@drawable/ic_fav_add_work"
+                                    android:drawablePadding="@dimen/_10sdp"
+                                    android:onClick="@{viewModel::onWorkClick}"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="15sp"
+                                    android:text="@{viewModel.translationModel.txt_Work}" />
+
+                                <RadioButton
+                                    android:background="@drawable/ic_custom_radio_selector"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:button="@null"
+                                    android:paddingTop="8dp"
+                                    android:paddingBottom="8dp"
+                                    android:paddingStart="20dp"
+                                    android:paddingEnd="20dp"
+                                    android:layout_marginStart="@dimen/_12sdp"
+                                    android:drawableStart="@drawable/ic_fav_add_other"
+                                    android:drawablePadding="@dimen/_10sdp"
+                                    android:onClick="@{viewModel::onOtherClick}"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:textColor="@color/colorPrimary"
+                                    android:textSize="15sp"
+                                    android:text="@{viewModel.translationModel.txt_Other}" />
+
+                            </RadioGroup>
+
+                        </RelativeLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textAllCaps="true"
+                            android:textColor="@color/clr_8F9BB3"
+                            android:textSize="12sp"
+                            android:text="@{viewModel.translationModel.txt_place_name}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+
+                        <EditText
+                            android:id="@+id/place_name"
+                            android:background="@drawable/edit_text_form"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:enabled="@{viewModel.mIsEditEnable}"
+                            android:maxLength="20"
+                            android:afterTextChanged="@{viewModel::onPlaceTextChanged}"
+                            android:inputType="textCapWords"
+                            android:hint="@{viewModel.translationModel.txt_place_name_enter}"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/clr_222B45"
+                            android:textSize="15sp"
+                            android:text="@{viewModel.mPlaceName}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textAllCaps="true"
+                            android:textColor="@color/clr_8F9BB3"
+                            android:textSize="12sp"
+                            android:text="@{viewModel.translationModel.txt_place_addr}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+
+                        <EditText
+                            android:background="@drawable/edit_text_form"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingEnd="@dimen/_15sdp"
+                            android:afterTextChanged="@{viewModel::onAddressTextChanged}"
+                            android:inputType="textCapWords"
+                            android:hint="@{viewModel.translationModel.txt_place_addr_enter}"
+                            android:fontFamily="@font/roboto_regular"
+                            android:textColor="@color/clr_222B45"
+                            android:textSize="15sp"
+                            android:text="@{viewModel.mAddress}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+
+                        <Button
+                            style="?android:attr/borderlessButtonStyle"
+                            android:background="@drawable/btn_primary"
+                            android:layout_width="wrap_content"
+                            android:layout_height="40dp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginBottom="@dimen/_25sdp"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp"
+                            android:drawableStart="@drawable/ic_pick_map"
+                            android:drawablePadding="@dimen/_8sdp"
+                            android:onClick="@{()->viewModel.onPickFromMapClick()}"
+                            android:textColor="@color/buttonTextColor"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textAllCaps="true"
+                            android:textSize="14sp"
+                            android:text="@{viewModel.translationModel.txt_map_pick}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+                        <Button
+                            style="?android:attr/borderlessButtonStyle"
+                            android:background="@drawable/btn_primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginBottom="@dimen/_25sdp"
+                            android:enabled="@{viewModel.mIsSubmitEnable}"
+                            android:onClick="@{viewModel::onClickSavePlace}"
+                            android:textColor="@color/buttonTextColor"
+                            android:fontFamily="@font/roboto_medium"
+                            android:textAllCaps="true"
+                            android:textSize="18sp"
+                            android:text="@{viewModel.translationModel.txt_Save_place}"
+                            android:visibility="@{viewModel.optionSelected?View.VISIBLE:View.GONE}"/>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

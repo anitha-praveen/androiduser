@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.favorites.pickFromMap.PickFromMapVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Toolbar"
+                app:title="@{viewModel.MAddress}"
+                app:titleTextAppearance="@style/Address.TitleText"
+                app:titleTextColor="@color/clr_222B45"
+                app:navigationIcon="@drawable/back_nav">
+
+                <ImageButton
+                    android:id="@+id/img_btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="15dp"
+                    android:padding="5dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    app:srcCompat="@drawable/ic_search_gray"
+                    android:onClick="@{()->viewModel.onClickSearchLocation()}" />
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <fragment
+            android:id="@+id/pick_from_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/appBarLayout" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_below="@+id/dest_pin"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="-12dp"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/ic_circle_red_border_white" />
+
+            <RelativeLayout
+                android:id="@+id/dest_pin"
+                android:background="@drawable/ic_drop_marker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="13dp"
+                    android:layout_centerHorizontal="true"
+                    app:srcCompat="@drawable/ic_dest_icon" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <ImageButton
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_above="@+id/btn_confirm_location"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/curved_border_dark_white"
+            android:elevation="@dimen/_5sdp"
+            android:onClick="@{()->viewModel.onClickCurrentLocation()}"
+            android:padding="@dimen/_9sdp"
+            android:visibility="@{viewModel.isLocationAvailable ? View.VISIBLE : View.GONE}"
+            app:srcCompat="@drawable/ic_gps_fixed" />
+
+        <Button
+            android:id="@+id/btn_confirm_location"
+            style="?android:attr/borderlessButtonStyle"
+            android:background="@drawable/btn_primary"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_25sdp"
+            android:onClick="@{()->viewModel.onClickSelectPlace()}"
+            android:textColor="@color/buttonTextColor"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:text="@{viewModel.translationModel.txt_con_loc}" />
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

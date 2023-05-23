@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.loginOrSignup.register.RegisterVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/frag_bg"
+        android:fitsSystemWindows="true"
+        android:onClick="@{()->viewModel.onClickOutSide()}">
+
+        <ScrollView
+            android:id="@+id/reg_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:focusable="false"
+            android:focusableInTouchMode="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:backgroundTint="@color/frag_bg"
+                    app:cardElevation="@dimen/_10sdp"
+                    app:cornerRadius="@dimen/_5sdp" >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:paddingTop="@dimen/_6sdp"
+                        android:paddingBottom="@dimen/_6sdp"
+                        android:text="@{viewModel.translationModel.txt_add_personal_info}"
+                        android:layout_gravity="center_horizontal"
+                        android:textAllCaps="false"
+                        android:textColor="@color/clr_2F2E2E"
+                        android:textSize="@dimen/_15sdp"/>
+                </androidx.cardview.widget.CardView>
+
+                <ImageView
+                    android:id="@+id/profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_profile_dummy_icon"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:onClick="@{()->viewModel.onClickImage()}"
+                    android:layout_marginBottom="@dimen/_16sdp"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{viewModel.translationModel.txt_name}"
+                    android:textColor="@color/darkM_636363"
+                    android:visibility="@{viewModel.fnameTitle?View.VISIBLE:View.GONE}"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"/>
+
+
+
+
+                <EditText
+                    android:id="@+id/et_fname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:digits="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:gravity="start"
+                    android:imeOptions="actionDone"
+                    android:hint="@{viewModel.translationModel.txt_name}"
+                    android:inputType="text"
+                    android:afterTextChanged="@{(view)->viewModel.onNameEdit(view)}"
+                    android:maxLength="20"
+                    android:text="@={viewModel.FirstName}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/darkM_636363"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{viewModel.translationModel.text_email_plain}"
+                    android:textColor="@color/darkM_636363"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:visibility="@{viewModel.emailTitle?View.VISIBLE:View.GONE}"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_16sdp"
+                    android:visibility="@{viewModel.emailTitle?View.GONE:View.VISIBLE}"/>
+
+                <EditText
+                    android:id="@+id/edit_email_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@{viewModel.translationModel.text_email_plain}"
+                    android:afterTextChanged="@{(view)->viewModel.onEmailEdit(view)}"
+                    android:fontFamily="@font/roboto_bold"
+                    android:inputType="textEmailAddress"
+                    android:layoutDirection="ltr"
+                    android:imeOptions="actionDone"
+                    android:backgroundTint="@color/black"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:text="@={viewModel.Email}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/darkM_636363"
+                    android:textDirection="ltr"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@{viewModel.translationModel.text_title_Referralcode}"
+                    android:textColor="@color/darkM_636363"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:visibility="@{viewModel.referralTitle?View.VISIBLE:View.GONE}"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"/>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_16sdp"
+                    android:visibility="@{viewModel.referralTitle?View.GONE:View.VISIBLE}"/>
+
+                <EditText
+                    android:id="@+id/edit_refferal_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_bold"
+                    android:hint="@string/referral_code_optional"
+                    android:inputType="textEmailAddress"
+                    android:layoutDirection="ltr"
+                    android:backgroundTint="@color/black"
+                    android:imeOptions="actionDone"
+                    android:afterTextChanged="@{(view)->viewModel.onReferralEdit(view)}"
+                    android:text="@={viewModel.referral_code}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/darkM_636363"
+                    android:textDirection="ltr"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    android:textSize="@dimen/_12sdp" />
+
+
+                <com.google.android.material.button.MaterialButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginEnd="@dimen/_25sdp"
+                    app:cornerRadius="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:text="@{viewModel.translationModel.txt_sign_up}"
+                    android:textColor="@color/buttonTextColor"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textSize="@dimen/_12sdp"
+                    android:onClick="@{viewModel::onClickSignup}"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

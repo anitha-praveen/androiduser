@@ -1,0 +1,13 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="150dp"
+    android:height="28dp"
+    android:viewportWidth="150"
+    android:viewportHeight="28">
+<!--  <path-->
+<!--      android:pathData="M150,0H4C1.791,0 0,1.791 0,4V24C0,26.209 1.791,28 4,28H150V0Z"-->
+<!--      android:fillColor="#FFD60B"/>-->
+  <solid android:color="@color/colorPrimary" />
+
+
+  <corners android:radius="@dimen/_4sdp" />
+</shape>

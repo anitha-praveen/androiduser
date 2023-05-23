@@ -1,0 +1,218 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.referral.ReferralVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@color/frag_bg">
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/back_img"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:foreground="@drawable/ic_back_icon"
+                android:foregroundGravity="center"
+                app:backgroundTint="@color/frag_bg"
+                app:maxImageSize="@dimen/_2sdp" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="35sp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_toEndOf="@+id/back_img"
+                app:cardBackgroundColor="@color/frag_bg"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="@dimen/_10sdp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="@{viewModel.translationModel.text_title_Referralcode}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:id="@+id/inviteFriends"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/relativeLayout4"
+            android:text="@{viewModel.translationModel.txt_invite_friends}"
+            android:textColor="@color/clr_2F2E2E"
+            android:textSize="@dimen/_15sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_marginTop="@dimen/_30sdp"/>
+
+
+        <TextView
+            android:id="@+id/inviteAdditional"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.refContent}"
+            android:layout_below="@id/inviteFriends"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="@color/clr_2F2E2E"
+            android:textSize="@dimen/_11sdp"/>
+
+        <RelativeLayout
+            android:id="@+id/totalAmount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/inviteAdditional"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_30sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.translationModel.txt_total_referral_amount}"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/_15sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.refAmount}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_200sdp"
+            android:layout_below="@+id/totalAmount"
+            android:layout_marginTop="@dimen/_20sdp">
+
+            <ImageView
+                android:id="@+id/tree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@drawable/ic_tree" />
+
+            <ImageView
+                android:id="@+id/minion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toEndOf="@id/tree"
+                android:background="@drawable/ic_refferal_minion" />
+
+            <RelativeLayout
+                android:id="@+id/referralCode"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/tree"
+                android:layout_marginStart="@dimen/_minus35sdp"
+                android:layout_above="@+id/minion">
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@{viewModel.translationModel.txt_your_referral_code}"
+                        android:textColor="@color/clr_2F2E2E"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:background="@drawable/ic_refferal_code_bg"
+                        android:fontFamily="@font/roboto_bold"
+                        android:gravity="center"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingTop="@dimen/_4sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:paddingBottom="@dimen/_4sdp"
+                        android:text="@{viewModel.referralCode}"
+                        android:textColor="@color/clr_2F2E2E"
+                        android:textSize="@dimen/_11sdp" />
+
+                </RelativeLayout>
+
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:text="@{viewModel.translationModel.txt_share}"
+            android:textColor="@color/buttonTextColor"
+            android:fontFamily="@font/roboto_bold"
+            android:enabled="@{!viewModel.isLoading}"
+            android:onClick="@{()->viewModel.onClickShare()}"
+            android:layout_alignParentBottom="true"/>
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+
+</layout>

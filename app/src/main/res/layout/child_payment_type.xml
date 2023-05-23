@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.paymentType.adapter.ChildPaymentTypeVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{()->viewModel.onItemSelected()}"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:background="@{viewModel.isSelected?@drawable/payment_selected_bg:@drawable/payment_normal_bg}">
+
+        <ImageView
+            android:id="@+id/img_pay_cash"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@{viewModel.paymentType.equals(`CASH`)?@drawable/ic_cash: viewModel.paymentType.equals(`CARD`)?@drawable/ic_card_yellow:@drawable/ic_wallet}" />
+
+        <TextView
+            android:id="@+id/txt_pay_cash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/img_pay_cash"
+            android:layout_toStartOf="@+id/img_pay_check_cash"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="16dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/clr_222B45"
+            android:textSize="18sp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.paymentType}" />
+
+
+        <ImageView
+            android:id="@+id/img_pay_check_cash"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:src="@{viewModel.isSelected?@drawable/ic_red_check_checked:@drawable/ic_red_check_unchecked}" />
+
+    </RelativeLayout>
+
+</layout>

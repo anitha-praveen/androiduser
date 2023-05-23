@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.applyPromo.ApplyPromoVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/frag_bg">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/back_img"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            app:cardElevation="@dimen/_5sdp"
+            app:cardBackgroundColor="@color/frag_bg"
+            app:cardCornerRadius="@dimen/_15sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:background="@drawable/ic_back_icon" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/back_img"
+            app:cardBackgroundColor="@color/frag_bg"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:cardElevation="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{viewModel.translationModel.Txt_title_Promocode}"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </androidx.cardview.widget.CardView>
+
+
+        <RelativeLayout
+            android:id="@+id/edit_text_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/back_img"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/bg_info"
+            android:padding="@dimen/_8sdp">
+
+            <EditText
+                android:id="@+id/promo_et"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:afterTextChanged="@{(e)->viewModel.onPromoEdit(e)}"
+                android:background="@color/clr_transparent"
+                android:enabled="@{viewModel.isPromoApplied?false:true}"
+                android:fontFamily="@font/roboto_medium"
+                android:hint="@{viewModel.translationModel.txt_enter_promo}"
+                android:maxLength="20"
+                android:text="@={viewModel.promoCode}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <ImageView
+                android:id="@+id/close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close_circle"
+                android:layout_alignParentEnd="true"
+                android:visibility="@{viewModel.isPromoApplied?View.VISIBLE:View.GONE}"
+                android:onClick="@{viewModel::removePromo}"
+                android:layout_margin="@dimen/_8sdp"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/apply_promo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Apply"
+                android:fontFamily="@font/roboto_medium"
+                android:layout_centerVertical="true"
+                android:onClick="@{()->viewModel.applyPromoEdited()}"
+                android:textColor="@color/clr_FB4A46"
+                android:textSize="@dimen/_15sdp"
+                android:visibility="@{viewModel.showApply?View.VISIBLE : View.GONE}" />
+
+
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/available_promo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_text_lay"
+            android:textSize="@dimen/_15sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@{viewModel.translationModel.txt_promo_available_promo}"
+            android:textColor="@color/clr_222B45"
+            android:fontFamily="@font/roboto_medium"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/promocodeRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/available_promo"
+            android:layout_margin="@dimen/_10sdp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="@{viewModel.isPromoApplied?viewModel.isPromoAvailable()?View.VISIBLE:View.GONE:View.GONE}"
+            android:background="@color/clr_trans"
+            android:layout_below="@+id/available_promo"
+            android:layout_margin="@dimen/_10sdp"/>
+
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+    </RelativeLayout>
+</layout>

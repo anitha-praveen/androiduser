@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.outStation.types.ChildTypesOutStationVm" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:background="@android:color/transparent"
+        android:onClick="@{()->viewModel.onItemSelected()}"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.vehicalType}"
+            android:textColor="@{viewModel.isSelected?@color/black:@color/clr_979797}" />
+
+        <RelativeLayout
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            >
+
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_centerHorizontal="true"
+                android:background="@{viewModel.isSelected?@drawable/types_selected_bg:@drawable/ic_types_bg}"
+                 />
+
+
+            <ImageView
+                android:id="@+id/model_item_image"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                app:childcarimageUrl="@{viewModel.imageUrl}" />
+
+
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@{viewModel.price}"
+            android:visibility="gone"
+            android:textColor="@{viewModel.isSelected?@color/black:@color/clr_979797}" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+           android:visibility="gone"
+            android:background="@color/clr_DDDDDD"/>
+<!--        android:visibility="@{viewModel.isSelected?View.GONE:View.VISIBLE}"-->
+    </LinearLayout>
+
+
+
+</layout>

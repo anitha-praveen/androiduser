@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.adapters.fav_adapter.ChildFavoritePlaceVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_7sdp">
+
+
+        <ImageView
+            android:id="@+id/icon"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="@dimen/_15sdp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:onClick="@{()->viewModel.onFavSelected()}"
+            android:src="@{viewModel.title.equals(`Home`) ? @drawable/ic_home_icon : viewModel.title.equals(`Work`) ? @drawable/ic_address_work : @drawable/ic_location_red}" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/icon"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:maxLines="1"
+            android:onClick="@{()->viewModel.onFavSelected()}"
+            android:text="@={viewModel.title}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+
+        <TextView
+            android:id="@+id/details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_toStartOf="@+id/delete"
+            android:layout_toEndOf="@id/icon"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_regular"
+            android:maxWidth="@dimen/_200sdp"
+            android:maxLines="1"
+            android:onClick="@{()->viewModel.onFavSelected()}"
+            android:text="@={viewModel.place}"
+            android:textColor="@color/darkM_7E7D7D"
+            android:textSize="@dimen/_11sdp" />
+
+
+        <ImageButton
+            android:id="@+id/delete"
+            android:layout_width="@dimen/_15sdp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:onClick="@{()->viewModel.deleteFavClicked()}"
+            android:visibility="@{viewModel.showDelete ? View.VISIBLE : View.GONE}"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/details"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_7sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:background="@color/clr_EFEFEF" />
+
+    </RelativeLayout>
+
+</layout>

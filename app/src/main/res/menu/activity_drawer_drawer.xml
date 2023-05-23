@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_nav_home"
+            android:title="@string/txt_Home" />
+
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/ic_nav_rides"
+            android:title="@string/txt_my_rides" />
+
+        <item
+            android:id="@+id/nav_notification"
+            android:icon="@drawable/ic_nav_notifications"
+            android:title="@string/txt_noitification" />
+
+        <item
+            android:id="@+id/nav_language"
+            android:icon="@drawable/ic_language"
+            android:title="@string/language"/>
+
+        <item
+            android:id="@+id/nav_support"
+            android:icon="@drawable/ic_menu_support"
+            android:title="@string/txt_support" />
+
+        <item
+            android:id="@+id/nav_referral"
+            android:icon="@drawable/ic_refferel_menu"
+            android:title="@string/text_title_Referral"/>
+
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_menu_about"
+            android:title="@string/about_us"/>
+
+
+
+
+<!--        hidden items-->
+
+        <item
+            android:id="@+id/nav_wallet"
+            android:icon="@drawable/ic_menu_wallet"
+            android:title="@string/wallet"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/nav_sos"
+            android:icon="@drawable/ic_menu_sos"
+            android:title="@string/sos_txt"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/nav_suggestion"
+            android:icon="@drawable/ic_suggestion"
+            android:title="@string/txt_suggestion"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/nav_logout"
+            android:icon="@drawable/ic_menu_logout"
+            android:title="@string/txt_logout"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_pngitem_5177724"
+            android:title="@string/text_profile"
+            android:visible="false"/>
+
+
+    </group>
+
+</menu>
+

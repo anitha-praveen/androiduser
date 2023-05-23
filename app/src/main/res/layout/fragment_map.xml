@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.mapfragment.MapFragmentVM" />
+
+        <import type="android.view.View" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/layout_pickup"
+                android:layout_alignParentTop="true"
+                android:layout_marginBottom="@dimen/_minus15sdp">
+
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/map_fragment"
+                    android:name="com.google.android.gms.maps.SupportMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:foreground="@drawable/ic_menu_new"
+                    android:foregroundGravity="center"
+                    android:onClick="@{() -> viewModel.onMenuClick()}"
+                    app:backgroundTint="@color/frag_bg"
+                    app:maxImageSize="@dimen/_2sdp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/map_notification_icon"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:elevation="@dimen/_10sdp"
+                    android:foreground="@drawable/ic_notification_new"
+                    android:foregroundGravity="center"
+                    android:onClick="@{()->viewModel.onNotificationClick()}"
+                    app:backgroundTint="@color/frag_bg"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/center_view"
+                    android:layout_centerHorizontal="true"
+                    android:orientation="vertical"
+                    android:visibility="@{viewModel.isinsideZoneView?View.VISIBLE:View.GONE}">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/frag_bg"
+                        app:cardCornerRadius="@dimen/_5sdp">
+
+                        <RelativeLayout
+                            android:layout_width="@dimen/_190sdp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:background="@color/colorPrimary"
+                            android:clipChildren="true">
+
+                            <ImageView
+                                android:id="@+id/person_img"
+                                android:layout_width="@dimen/_30sdp"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_alignParentStart="true"
+                                android:layout_centerVertical="true"
+                                android:padding="@dimen/_8sdp"
+                                android:background="@color/black"
+                                app:srcCompat="@drawable/ic_road_symbol" />
+
+
+                            <TextView
+                                android:id="@+id/pickup_address"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginStart="@dimen/_3sdp"
+                                android:layout_marginTop="@dimen/_3sdp"
+                                android:layout_toStartOf="@id/edit_pick"
+                                android:layout_toEndOf="@id/person_img"
+                                android:ellipsize="marquee"
+                                android:fontFamily="@font/roboto_medium"
+                                android:marqueeRepeatLimit="marquee_forever"
+                                android:onClick="@{()->viewModel.onClickPickLocation()}"
+                                android:scrollHorizontally="true"
+                                android:singleLine="true"
+                                android:text="@{viewModel.address}"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_11sdp" />
+
+                            <ImageView
+                                android:id="@+id/edit_pick"
+                                android:layout_width="@dimen/_20sdp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:layout_marginEnd="@dimen/_5sdp"
+                                android:onClick="@{viewModel::onCurrentFavoClicked}"
+                                app:srcCompat="@drawable/ic_heart_symbol" />
+
+                            <!--                            android:onClick="@{()->viewModel.onClickFav()}"-->
+
+
+                        </RelativeLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <View
+                        android:layout_width="4dp"
+                        android:layout_height="@dimen/_10sdp"
+                        android:layout_gravity="center_horizontal" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="-5dp"
+                        app:srcCompat="@drawable/ic_pickup_streched" />
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/center_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_centerVertical="true" />
+
+                <!--                <include-->
+                <!--                    android:id="@+id/progressBar"-->
+                <!--                    layout="@layout/progress_dialog"-->
+                <!--                    android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />-->
+
+            </RelativeLayout>
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_above="@+id/layout_pickup"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:elevation="@dimen/_10sdp"
+                android:enabled="@{!viewModel.isLoading}"
+                android:foreground="@drawable/ic_curent_location_new"
+                android:foregroundGravity="center"
+                android:onClick="@{()->viewModel.onClickCurrentLocation()}"
+                app:backgroundTint="@color/frag_bg"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+            <RelativeLayout
+                android:id="@+id/layout_pickup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/curved_border_top_white"
+                    android:visibility="@{viewModel.isinsideZoneView?View.GONE:View.VISIBLE}">
+
+                    <RelativeLayout
+                        android:id="@+id/unavailable_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/out_zone_txt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_toStartOf="@id/out_of_zone_image"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{viewModel.translationModel.txt_currently_unavilable}"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <TextView
+                            android:id="@+id/out_zone_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/out_zone_txt"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:layout_toStartOf="@id/out_of_zone_image"
+                            android:fontFamily="@font/roboto_bold"
+                            android:text="@{viewModel.translationModel.txt_be_with_you}"
+                            android:textColor="@color/clr_gray"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <ImageView
+                            android:id="@+id/out_of_zone_image"
+                            android:layout_width="@dimen/_64sdp"
+                            android:layout_height="@dimen/_64sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:src="@drawable/out_of_zone" />
+                    </RelativeLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/unavailable_desc"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:onClick="@{()->viewModel.onClickPickLocation()}"
+                        android:text="@{viewModel.translationModel.txt_change_pickup_location}"
+                        android:textColor="@color/buttonTextColor"
+                        android:textSize="@dimen/_10sdp"
+                        tools:ignore="SpeakableTextPresentCheck" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_lay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="@{viewModel.isAskingConfirmLocation?View.GONE:View.VISIBLE}">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/where_going"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_8sdp"
+                            android:onClick="@{()->viewModel.chooseDestination()}"
+                            android:visibility="@{viewModel.isAskingConfirmLocation?View.GONE:View.VISIBLE}"
+                            app:cardBackgroundColor="@color/darkM_2F2E2E"
+                            app:cardCornerRadius="@dimen/_5sdp">
+
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/colorPrimary"
+                                android:visibility="@{viewModel.isinsideZoneView?View.VISIBLE:View.GONE}">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:drawablePadding="@dimen/_5sdp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:hint="@{viewModel.translationModel.txt_where_going}"
+                                    android:paddingStart="@dimen/_5sdp"
+                                    android:paddingTop="@dimen/_8sdp"
+                                    android:paddingEnd="@dimen/_5sdp"
+                                    android:paddingBottom="@dimen/_8sdp"
+                                    android:textColor="@color/white"
+                                    android:textColorHint="@color/white"
+                                    android:textSize="@dimen/_12sdp"
+                                    app:drawableStartCompat="@drawable/ic_search" />
+
+                                <!--                                <ImageView-->
+                                <!--                                    android:id="@+id/heart"-->
+                                <!--                                    android:layout_width="@dimen/_20sdp"-->
+                                <!--                                    android:layout_height="wrap_content"-->
+                                <!--                                    android:layout_alignParentEnd="true"-->
+                                <!--                                    android:layout_centerVertical="true"-->
+                                <!--                                    android:layout_marginEnd="@dimen/_10sdp"-->
+                                <!--                                    android:onClick="@{viewModel::onCurrentFavoClicked}"-->
+                                <!--                                    app:srcCompat="@drawable/ic_heart_symbol" />-->
+
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:background="@drawable/curved_border_dark_white"
+                            android:orientation="vertical"
+                            android:visibility="@{viewModel.isinsideZoneView?View.VISIBLE:View.GONE}">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/favListRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_10sdp"
+                                android:paddingEnd="@dimen/_10sdp"
+                                android:visibility="@{viewModel.haveFavorites?View.VISIBLE:View.GONE}" />
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/recentListRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingStart="@dimen/_10sdp"
+                                android:paddingEnd="@dimen/_10sdp"
+                                android:visibility="@{viewModel.haveRecentLocations?View.VISIBLE:View.GONE}" />
+
+                        </LinearLayout>
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/curved_border_top_white"
+                            android:clickable="true"
+                            android:visibility="@{!viewModel.isinsideZoneView?View.GONE:View.VISIBLE}"
+                            android:elevation="@dimen/_5sdp"
+                            android:fadingEdgeLength="@dimen/_5sdp"
+                            android:focusable="true"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/_15sdp"
+                            android:paddingRight="@dimen/_15sdp"
+                            android:weightSum="3">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:onClick="@{()->viewModel.onClickDaily()}"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/selections"
+                                    android:layout_width="@dimen/_85sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:background="@color/frag_bg"
+                                    android:src="@{viewModel.isDialySelected?@drawable/ic_item_selection_bg : @drawable/ic_unselected_car_bg}" />
+
+
+                                <ImageView
+                                    android:id="@+id/car"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/selections"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_minus42sdp"
+                                    android:src="@{viewModel.isDialySelected?@drawable/ic_daily_selected_car:@drawable/ic_unselected_daily_car}" />
+
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/dailyText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/car"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="center"
+                                    android:text="@{viewModel.translationModel.txt_daily}"
+                                    android:textColor="@color/black"
+                                    app:fontFamily="@font/roboto_bold" />
+
+
+                            </RelativeLayout>
+
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:onClick="@{()->viewModel.onClickRental()}"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/selections2"
+                                    android:layout_width="@dimen/_85sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:background="@color/frag_bg"
+                                    android:src="@{viewModel.isRentalSelected?@drawable/ic_item_selection_bg : @drawable/ic_unselected_car_bg}" />
+
+
+                                <ImageView
+                                    android:id="@+id/car2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/selections2"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_minus42sdp"
+                                    android:src="@{viewModel.isRentalSelected?@drawable/ic_selected_rental_car:@drawable/ic_unselected_rental_car}" />
+
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/rentalText"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/car2"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:fontFamily="@font/roboto_regular"
+                                    android:gravity="center"
+                                    android:text="@{viewModel.translationModel.txt_rental}"
+                                    android:textColor="@color/black" />
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:layout_marginBottom="@dimen/_5sdp"
+                                android:onClick="@{()->viewModel.onClickOutstation()}"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/selections3"
+                                    android:layout_width="@dimen/_85sdp"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:layout_marginTop="@dimen/_15sdp"
+                                    android:background="@color/frag_bg"
+                                    android:src="@{viewModel.isOutstationSelected?@drawable/ic_item_selection_bg : @drawable/ic_unselected_car_bg}" />
+
+
+                                <ImageView
+                                    android:id="@+id/car3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/selections3"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_minus42sdp"
+                                    android:src="@{viewModel.isOutstationSelected?@drawable/ic_selected_outstation_car:@drawable/ic_unselected_outstation_car}" />
+
+
+                                <com.google.android.material.textview.MaterialTextView
+                                    android:id="@+id/outstation_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_below="@id/car3"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:gravity="center"
+                                    android:text="@{viewModel.translationModel.txt_outstation}"
+                                    android:textColor="@color/black"
+                                    app:fontFamily="@font/roboto_regular" />
+
+
+                            </RelativeLayout>
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+
+
+                    <LinearLayout
+                        android:id="@+id/dest_bottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/curved_border_top_white"
+                        android:elevation="@dimen/_5sdp"
+                        android:fadingEdgeLength="@dimen/_5sdp"
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/_16sdp"
+                        android:paddingLeft="@dimen/_16sdp"
+                        android:paddingTop="@dimen/_5sdp"
+                        android:paddingEnd="@dimen/_16sdp"
+                        android:paddingRight="@dimen/_16sdp"
+                        android:paddingBottom="@dimen/_12sdp"
+                        android:visibility="@{viewModel.isinsideZoneView?viewModel.isAskingConfirmLocation?View.VISIBLE:View.GONE:View.GONE}">
+
+
+                        <Button
+                            style="?android:attr/borderlessButtonStyle"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_35sdp"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_10sdp"
+                            android:background="@drawable/btn_primary"
+                            android:fontFamily="@font/roboto_medium"
+                            android:onClick="@{()->viewModel.onClickConfirmPickup()}"
+                            android:text="@{viewModel.translationModel.txt_confirmPickUp_location}"
+                            android:textAllCaps="true"
+                            android:textColor="@color/buttonTextColor"
+                            android:textSize="@dimen/_12sdp"
+                            tools:ignore="SpeakableTextPresentCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/child_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>

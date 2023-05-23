@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/getStartedScreen">
+
+
+
+    <fragment
+        android:id="@+id/getStartedScreen"
+        android:name="com.cloneUser.client.loginOrSignup.getStarteedScrn.GetStartedScreen"
+        android:label="Get Started"
+        tools:layout="@layout/fragment_get_started">
+
+        <action
+            android:id="@+id/toTourGuide"
+            app:destination="@id/tourGuide"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@id/login"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/tourGuide"
+        android:name="com.cloneUser.client.loginOrSignup.tour.TourGuideFrag"
+        android:label="tour guide"
+        tools:layout="@layout/fragment_tour_guide">
+
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@id/login"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/login"
+        android:name="com.cloneUser.client.loginOrSignup.login.LoginFragment"
+        android:label="Login"
+        tools:layout="@layout/fragment_login">
+
+        <action
+            android:id="@+id/toOtp"
+            app:destination="@+id/otp"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.cloneUser.client.loginOrSignup.otp.OtpFragment"
+        android:label="Otp"
+        tools:layout="@layout/fragment_otp">
+
+
+        <action
+            android:id="@+id/toRegister"
+            app:destination="@id/register"
+            app:popUpTo="@id/login"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/register"
+        android:name="com.cloneUser.client.loginOrSignup.register.RegisterFragment"
+        android:label="Otp"
+        tools:layout="@layout/fragment_register">
+
+
+
+    </fragment>
+
+</navigation>

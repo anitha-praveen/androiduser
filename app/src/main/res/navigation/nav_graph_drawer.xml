@@ -1,0 +1,621 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FirstFragment">
+
+    <fragment
+        android:id="@+id/FirstFragment"
+        android:name="com.cloneUser.client.drawer.mapfragment.MapFragment"
+        android:label="Map"
+        tools:layout="@layout/fragment_map">
+
+
+        <action
+            android:id="@+id/map_to_confirm_destination"
+            app:destination="@+id/confirm_destination" />
+
+        <action
+            android:id="@+id/map_to_profile"
+            app:destination="@+id/profile" />
+
+        <action
+            android:id="@+id/map_to_history_list"
+            app:destination="@+id/history_list" />
+
+
+        <action
+            android:id="@+id/map_to_favorites"
+            app:destination="@+id/favorite_place" />
+
+        <action
+            android:id="@+id/map_to_support"
+            app:destination="@+id/support" />
+
+        <action
+            android:id="@+id/map_to_trip"
+            app:destination="@id/trip" />
+
+        <action
+            android:id="@+id/map_to_invoice"
+            app:destination="@id/invoice" />
+        <action
+            android:id="@+id/map_to_outStation_invoice"
+            app:destination="@id/outstation_invoice_frag"/>
+        <action
+            android:id="@+id/map_to_rental_invoice"
+            app:destination="@id/rental_invoice_frag"/>
+        <action
+            android:id="@+id/map_to_suggestion"
+            app:destination="@id/suggestion" />
+        <action
+            android:id="@+id/map_to_wallet"
+            app:destination="@id/wallet" />
+        <action
+            android:id="@+id/map_to_notification"
+            app:destination="@id/notifcation" />
+
+        <action
+            android:id="@+id/map_to_sos"
+            app:destination="@+id/sos" />
+
+        <action
+            android:id="@+id/map_to_ride_confirm"
+            app:destination="@+id/ride_confirm" />
+
+        <action
+            android:id="@+id/map_to_refferal"
+            app:destination="@+id/referral" />
+
+        <action
+            android:id="@+id/map_to_outStation"
+            app:destination="@+id/outStation" />
+
+        <action
+            android:id="@+id/map_to_rental"
+            app:destination="@+id/rental" />
+        <action
+            android:id="@+id/map_to_aboutus"
+            app:destination="@+id/about_us_navigation" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/outstation_invoice_frag"
+        android:name="com.cloneUser.client.drawer.outStation.outstationInvoice.OutstationInvoice"
+        android:label="OutstationInvoice"
+        tools:layout="@layout/outstation_invoice_lay" >
+        <action
+            android:id="@+id/outstation_invoice_to_rating"
+            app:destination="@id/rating"
+            app:popUpTo="@id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profile"
+        android:name="com.cloneUser.client.drawer.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile">
+
+        <action
+            android:id="@+id/to_edit_profile"
+            app:destination="@+id/edit_profile" />
+        <action
+            android:id="@+id/to_profile_add_favourites"
+            app:destination="@+id/profile_address_change" />
+        <action
+            android:id="@+id/to_cropImage"
+            app:destination="@id/crop_image_dialog" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/otp"
+        android:name="com.cloneUser.client.loginOrSignup.otp.OtpFragment"
+        android:label="Otp"
+        tools:layout="@layout/fragment_otp">
+
+        <argument
+            android:name="mode"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+
+        <argument
+            android:name="phone"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="country_code"
+            android:defaultValue="+91"
+            app:argType="string" />
+
+        <argument
+            android:name="country_code_id"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/toRegister"
+            app:destination="@id/register"
+            app:popUpTo="@id/login" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/favorite_place"
+        android:name="com.cloneUser.client.drawer.favorites.listFavorite.FavoriteFragment"
+        android:label="Favorite Place List"
+        tools:layout="@layout/fragment_favorite">
+
+        <action
+            android:id="@+id/favorite_to_add_favorite"
+            app:destination="@+id/add_favorite_place"
+
+
+            />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/add_favorite_place"
+        android:name="com.cloneUser.client.drawer.favorites.addFavorite.AddFavoriteFragment"
+        android:label="Add Favorite Place"
+        tools:layout="@layout/fragment_add_favorite">
+
+        <action
+            android:id="@+id/add_favorite_to_pick_from_map"
+            app:destination="@id/pick_from_map" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/pick_from_map"
+        android:name="com.cloneUser.client.drawer.favorites.pickFromMap.PickFromMapFragment"
+        android:label="Pick From Map"
+        tools:layout="@layout/fragment_pick_from_map">
+
+        <argument
+            android:name="place_name"
+            android:defaultValue="default"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/pick_from_map_to_fav_list"
+            app:destination="@+id/favorite_place"
+            app:popUpTo="@id/favorite_place"
+
+
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/language"
+        android:name="com.cloneUser.client.drawer.language.LanguageFrag"
+        android:label="Language"
+        tools:layout="@layout/fragment_languages"/>
+
+    <fragment
+        android:id="@+id/history_list"
+        android:name="com.cloneUser.client.drawer.myRides.HistoryListFragment"
+        android:label="My Rides"
+        tools:layout="@layout/fragment_history_list">
+
+        <action
+            android:id="@+id/history_to_invoice"
+            app:destination="@id/invoice" />
+        <action
+            android:id="@+id/history_to_rental_invoice"
+            app:destination="@id/rental_invoice_frag" />
+
+        <action
+            android:id="@+id/completed_history_to_complaints"
+            app:destination="@+id/complaints" />
+        <action
+            android:id="@+id/history_to_outstation_invoice"
+            app:destination="@+id/outstation_invoice_frag" />
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/confirm_destination"
+        android:name="com.cloneUser.client.drawer.confirmDestination.ConfirmDestinationFragment"
+        android:label="Confirm Destination"
+        tools:layout="@layout/fragment_confirm_destination">
+
+        <argument
+            android:name="pickup_latitude"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="pickup_longitude"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="pickup_address"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/completed_history_to_complaints"
+            app:destination="@+id/complaints" />
+
+        <action
+            android:id="@+id/confirm_destination_to_map"
+            app:destination="@id/FirstFragment" />
+        <action
+            android:id="@+id/confirm_destination_to_sos"
+            app:destination="@id/sos" />
+
+        <argument
+            android:name="is_trip_address_change"
+            android:defaultValue="false"
+            app:argType="boolean" />
+
+        <argument
+            android:name="request_id"
+            android:defaultValue="a"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/confirm_destination_to_ride_confirm"
+            app:destination="@id/ride_confirm" />
+
+        <action
+            android:id="@+id/confirm_destination_to_trip"
+            app:destination="@+id/trip"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/confirm_destination_to_search_place"
+            app:destination="@+id/search_place"
+            app:popUpTo="@id/FirstFragment" />
+         />
+
+    </fragment>
+    <fragment
+        android:id="@+id/ride_confirm"
+        android:name="com.cloneUser.client.drawer.rideConfirm.RideConfirmFragment"
+        android:label="Ride Confirm"
+        tools:layout="@layout/fragment_ride_confirmation">
+
+        <action
+            android:id="@+id/ride_confirm_to_trip"
+            app:destination="@id/trip"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/ride_confirm_to_map"
+            app:destination="@id/FirstFragment"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/ride_confirm_to_confirm_destination"
+            app:destination="@id/confirm_destination" />
+
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/support"
+        android:name="com.cloneUser.client.drawer.support.SupportFragment"
+        android:label="Support"
+        tools:layout="@layout/fragment_support">
+
+
+        <action
+            android:id="@+id/support_to_faq"
+            app:destination="@+id/faq_frag" />
+
+        <action
+            android:id="@+id/support_to_sos"
+            app:destination="@+id/sos" />
+
+        <action
+            android:id="@+id/support_to_complaints_history"
+            app:destination="@+id/complaints_history"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/sos"
+        android:name="com.cloneUser.client.drawer.sos.SosFragment"
+        android:label="SOS"
+        tools:layout="@layout/fragment_sos">
+        <argument
+            android:name="mode"
+            android:defaultValue="0"
+            app:argType="integer" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trip"
+        android:name="com.cloneUser.client.drawer.trip.TripFragment"
+        android:label="Trip"
+        tools:layout="@layout/fragment_trip">
+
+        <action
+            android:id="@+id/trip_to_invoice"
+            app:destination="@+id/invoice"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/trip_to_history"
+            app:destination="@+id/history_list" />
+
+        <action
+            android:id="@+id/trip_to_profile"
+            app:destination="@+id/profile" />
+
+        <action
+            android:id="@+id/trip_to_favorites"
+            app:destination="@+id/favorite_place" />
+
+        <action
+            android:id="@+id/trip_to_support"
+            app:destination="@+id/support" />
+
+
+        <action
+            android:id="@+id/trip_to_suggestion"
+            app:destination="@id/suggestion" />
+
+        <action
+            android:id="@+id/trip_to_wallet"
+            app:destination="@id/wallet" />
+
+        <action
+            android:id="@+id/trip_to_notification"
+            app:destination="@id/notifcation" />
+
+        <action
+            android:id="@+id/trip_to_sos"
+            app:destination="@+id/sos" />
+
+        <action
+            android:id="@+id/trip_to_searchPlace"
+            app:destination="@id/search_place"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/trip_to_address_change"
+            app:destination="@+id/trip_addressChange" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/invoice"
+        android:name="com.cloneUser.client.drawer.invoice.InvoiceFragment"
+        android:label="Invoice"
+        tools:layout="@layout/fragment_invoice">
+
+        <action
+            android:id="@+id/invoice_to_rating"
+            app:destination="@id/rating"
+            app:popUpTo="@id/FirstFragment" />
+
+        <action
+            android:id="@+id/invoice_to_complaints"
+            app:destination="@id/complaints"
+            app:popUpTo="@id/FirstFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/rating"
+        android:name="com.cloneUser.client.drawer.rating.RatingFragment"
+        android:label="Rating"
+        tools:layout="@layout/fragment_rating">
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/childHistory"
+        android:name="com.cloneUser.client.drawer.myRides.completed.CompletedHistoryList"
+        android:label="childHistory"
+        tools:layout="@layout/fragment_completed_history_list">
+
+    </fragment>
+    <fragment
+        android:id="@+id/suggestion"
+        android:name="com.cloneUser.client.drawer.suggestion.SuggestionFragment"
+        android:label="Suggestion"
+        tools:layout="@layout/fragment_suggestion">
+        <action
+            android:id="@+id/suggestion_to_sos"
+            app:destination="@id/sos" />
+    </fragment>
+    <fragment
+        android:id="@+id/outStation"
+        android:name="com.cloneUser.client.drawer.outStation.OutStationFrag"
+        android:label="@string/outstation"
+        tools:layout="@layout/fragment_outstation">
+        <action
+            android:id="@+id/toOutstation_search"
+            app:destination="@id/outstation_search" />
+        <action
+            android:id="@+id/outStation_to_promocode"
+            app:destination="@id/apply_promo" />
+        <action
+            android:id="@+id/outStation_to_map"
+            app:destination="@+id/FirstFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/outstation_search"
+        android:name="com.cloneUser.client.drawer.outStation.outstationSearchPlace.OutStationSearchFragment"
+        tools:layout="@layout/outstation_serach_fragment">
+        <action
+            android:id="@+id/to_out_station"
+            app:destination="@id/outStation" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/complaints"
+        android:name="com.cloneUser.client.drawer.complaint.addComplaints.ComplaintFragment"
+        android:label="Complaint"
+        tools:layout="@layout/fragment_complaint">
+
+        <argument
+            android:name="mode"
+            android:defaultValue="0"
+            app:argType="integer" />
+
+        <argument
+            android:name="request_id"
+            android:defaultValue="a"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/faq_frag"
+        android:name="com.cloneUser.client.drawer.faq.FaqFragment"
+        android:label="faq"
+        tools:layout="@layout/fragment_faq" />
+    <fragment
+        android:id="@+id/wallet"
+        android:name="com.cloneUser.client.drawer.wallet.WalletFragment"
+        android:label="wallet"
+        tools:layout="@layout/fragment_wallet">
+        <action
+            android:id="@+id/walltet_to_sos"
+            app:destination="@id/sos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/notifcation"
+        android:name="com.cloneUser.client.drawer.notificationList.NotificationFragment"
+        android:label="notification"
+        tools:layout="@layout/fragment_notification">
+        <action
+            android:id="@+id/notifcation_to_sos"
+            app:destination="@id/sos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/trip_addressChange"
+        android:name="com.cloneUser.client.drawer.tripAddressChange.TripAddressChangeFrag"
+        android:label="TripAddressChange"
+        tools:layout="@layout/fragment_trip_address_change">
+
+        <argument
+            android:name="lat"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="lng"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="dest_lat"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="dest_lng"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="address"
+            android:defaultValue="a"
+            app:argType="string" />
+
+        <argument
+            android:name="type"
+            android:defaultValue="pickup"
+            app:argType="string" />
+
+        <argument
+            android:name="req_id"
+            android:defaultValue="0"
+            app:argType="string" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/profile_address_change"
+        android:name="com.cloneUser.client.drawer.profile.proAddFvourites.ProAddFavourites"
+        android:label="ProfileAddressChange"
+        tools:layout="@layout/proadd_favo">
+        <argument
+            android:name="title"
+            android:defaultValue=""
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/referral"
+        android:name="com.cloneUser.client.drawer.referral.ReferralFrag"
+        android:label="@string/text_title_Referral"
+        tools:layout="@layout/fragment_referral" />
+
+    <fragment
+        android:id="@+id/rental"
+        android:name="com.cloneUser.client.drawer.rental.RentalFrag"
+        android:label="Rental"
+        tools:layout="@layout/fragment_rental">
+
+        <argument
+            android:name="pickLat"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="pickLng"
+            android:defaultValue="0"
+            app:argType="string" />
+
+        <argument
+            android:name="pickAddress"
+            android:defaultValue="0"
+            app:argType="string" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/about_us_navigation"
+        android:name="com.cloneUser.client.drawer.aboutUs.AboutUsFrag"
+        tools:layout="@layout/about_us_fragment" />
+    <fragment
+        android:id="@+id/ride_confirm_search_place"
+        android:name="com.cloneUser.client.drawer.rideConfirm.changeAddress.RideConfirmChangeAddress"
+        android:label="rc_change_address"
+        tools:layout="@layout/ride_confirm_change_address" />
+    <fragment
+        android:id="@+id/rental_invoice_frag"
+        android:name="com.cloneUser.client.drawer.rental.rentalInvoice.RentalInvoiceFrag"
+        android:label="RentalInvoice"
+        tools:layout="@layout/rental_invoice_lay" >
+        <action
+            android:id="@+id/renatal_invoice_to_rating"
+            app:destination="@id/rating"
+            app:popUpTo="@id/FirstFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/crop_image_dialog"
+        android:name="com.cloneUser.client.dialogs.cropImageDialog.CropImageDialog"
+        android:label="cropImage"
+        tools:layout="@layout/crop_image_layout">
+        <argument
+            android:name="uri"
+            android:defaultValue=""
+            app:argType="string" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/complaints_history"
+        android:name="com.cloneUser.client.drawer.complaint.history.common.ComplaintsListHistory"
+        android:label="Complaints List History"
+        tools:layout="@layout/fragment_complaints_list_history">
+
+        <action
+            android:id="@+id/toAddComplaints"
+            app:destination="@+id/complaints"/>
+    </fragment>
+</navigation>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.adapters.search_adapter.ChildSearchVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/child_linear"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_55sdp"
+            android:layout_marginStart="@dimen/_1sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <ImageView
+                android:layout_width="@dimen/_16sdp"
+                android:layout_height="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:src="@drawable/ic_road_symbol" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:onClick="@{()->viewModel.onItemSelected()}"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@={viewModel.title}"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/primary_txt_color"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="@dimen/_200sdp"
+                    android:text="@={viewModel.place}"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/clr_7E7D7D"
+                    android:textSize="@dimen/_11sdp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="@dimen/_200sdp"
+                    android:text="@={viewModel.distance}"
+                    android:fontFamily="@font/roboto_regular"
+                    android:textColor="@color/clr_7E7D7D"
+                    android:visibility="gone"
+                    android:textSize="@dimen/_11sdp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</layout>

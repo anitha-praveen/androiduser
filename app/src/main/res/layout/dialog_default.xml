@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.defaultDialog.DefaultDialogVM" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/_15sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_16sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:text="@{viewModel.msg}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_1sdp"
+                android:background="@color/black" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/confirm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:onClick="@{()->viewModel.close()}"
+                android:text="@{viewModel.translationModel.close}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

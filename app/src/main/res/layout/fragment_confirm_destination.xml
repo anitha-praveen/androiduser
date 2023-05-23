@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.confirmDestination.ConfirmDestinationVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mapView"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:background="@drawable/ic_circle"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_back_naviagation_arrow" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_alignBottom="@id/back"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/back"
+            app:cardBackgroundColor="@color/frag_bg"
+            app:cardCornerRadius="@dimen/_4sdp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{viewModel.translationModel.txt_destination}"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="64sp"
+                    android:layout_height="21sp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@drawable/ic_new_spinner_bg"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:textColor="@color/black"
+                    android:onClick="@{()->viewModel.onClickRiderSelection()}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:text="@{viewModel.rider}"
+                    android:textSize="11sp"
+                    app:drawableEndCompat="@drawable/ic_new_drop_down_arrow" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/back"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_6sdp">
+
+            <LinearLayout
+                android:id="@+id/ll_search_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/frag_bg"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/pickup_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/pick_up_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_pick_dot" />
+
+                    <TextView
+                        android:id="@+id/pickup_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toEndOf="@+id/pick_up_dot"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:maxLines="1"
+                        android:text="@{viewModel.pickAddress}"
+                        android:textColor="@color/clr_2F2E2E"
+                        android:textSize="@dimen/_11sdp" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/divider_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp">
+
+                    <ImageView
+                        android:id="@+id/strightLine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:src="@drawable/ic_line_divider" />
+
+                    <View
+                        android:id="@+id/horizontalLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toEndOf="@+id/strightLine"
+                        android:background="@color/clr_DDDBDB"
+                        android:textSize="@dimen/_13sdp" />
+
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/drop_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:onClick="@{()->viewModel.onClickDrop1()}">
+
+                    <ImageView
+                        android:id="@+id/drop_dot"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_red_square" />
+
+
+                    <EditText
+                        android:id="@+id/drop_address1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toStartOf="@+id/strightLineDrop"
+                        android:layout_toEndOf="@+id/drop_dot"
+                        android:afterTextChanged="@{(view)->viewModel.onFirstDropChanged(view)}"
+                        android:background="@null"
+                        android:drawableEnd="@drawable/clear_icon_invisible_small"
+                        android:drawableTint="@color/darkM_2F2E2E"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@{viewModel.showMultipleDropElements?viewModel.translationModel.txt_add_drop :viewModel.translationModel.txt_EnterDrop}"
+                        android:maxLines="1"
+                        android:onClick="@{()->viewModel.onClickDrop1()}"
+                        android:singleLine="true"
+                        android:text="@={viewModel.drop1Address}"
+                        android:textColor="@color/clr_2F2E2E"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                    <ImageView
+                        android:id="@+id/strightLineDrop"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toStartOf="@id/plus"
+                        android:src="@drawable/ic_line_divider"
+                        android:visibility="@{viewModel.showMultipleDropElements?View.GONE:View.VISIBLE}" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/plus"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:background="@color/frag_bg"
+                        android:onClick="@{()->viewModel.onClickPlus()}"
+                        android:src="@drawable/ic_plus_icon"
+                        android:visibility="@{viewModel.showMultipleDropElements?View.GONE:View.VISIBLE}" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/divider_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:visibility="@{viewModel.showMultipleDropElements?View.VISIBLE:View.GONE}">
+
+                    <ImageView
+                        android:id="@+id/strightLine2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:src="@drawable/ic_line_divider" />
+
+                    <View
+                        android:id="@+id/horizontalLine2"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_1sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toEndOf="@+id/strightLine2"
+                        android:background="@color/clr_DDDBDB"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <ImageButton
+                        android:id="@+id/cd_swap_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:onClick="@{()->viewModel.swapDestinations()}"
+                        app:srcCompat="@drawable/ic_swap" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/drop_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:onClick="@{()->viewModel.onClickDrop2()}"
+                    android:visibility="@{viewModel.showMultipleDropElements?View.VISIBLE:View.GONE}">
+
+                    <ImageView
+                        android:id="@+id/drop_dot2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:onClick="@{()->viewModel.onClickDrop2()}"
+                        android:src="@drawable/ic_red_square" />
+
+
+                    <EditText
+                        android:id="@+id/drop_address2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_toStartOf="@+id/minus"
+                        android:layout_toEndOf="@+id/drop_dot2"
+                        android:afterTextChanged="@{(view)->viewModel.onSecondDropChanged(view)}"
+                        android:background="@null"
+                        android:drawableEnd="@drawable/ic_close_invisible"
+                        android:drawableTint="@color/clr_2F2E2E"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/roboto_regular"
+                        android:hint="@{viewModel.translationModel.txt_EnterDrop}"
+                        android:maxLines="1"
+                        android:onClick="@{()->viewModel.onClickDrop2()}"
+                        android:singleLine="true"
+                        android:text="@={viewModel.drop2Address}"
+                        android:textColor="@color/darkM_2F2E2E"
+                        android:textSize="@dimen/_11sdp" />
+
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:id="@+id/minus"
+                        android:layout_width="@dimen/_30sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:background="@color/frag_bg"
+                        android:onClick="@{()->viewModel.onClickMinus()}"
+                        android:src="@drawable/ic_minus" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_10sdp" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/road_marker" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/selectionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:visibility="@{viewModel.showRecyclers?View.VISIBLE:View.GONE}"
+                    app:cardBackgroundColor="@color/frag_bg"
+                    app:cardCornerRadius="@dimen/_6sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/addressSearchResultsRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@{viewModel.translationModel.txt_recent}"
+                            android:textColor="@color/clr_2F2E2E"
+                            android:textSize="@dimen/_13sdp"
+                            android:visibility="@{viewModel.haveRecentLocations?View.VISIBLE:View.GONE}" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recentLocationsRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:fontFamily="@font/roboto_medium"
+                            android:text="@{viewModel.translationModel.txt_Fav_side_menu}"
+                            android:textColor="@color/clr_2F2E2E"
+                            android:textSize="@dimen/_13sdp"
+                            android:visibility="@{viewModel.haveFavorites?View.VISIBLE:View.GONE}" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/favoritesRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp" />
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+        <include
+            android:id="@+id/progressBar"
+            layout="@layout/progress_dialog"
+            android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}" />
+
+
+    </RelativeLayout>
+
+</layout>

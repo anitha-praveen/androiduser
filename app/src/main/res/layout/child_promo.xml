@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.applyPromo.adapter.ChildPromoVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:background="@android:color/transparent">
+
+        <RelativeLayout
+            android:id="@+id/promo_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/ic_promo_bg_icon">
+
+            <ImageView
+                android:id="@+id/promo_img"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                app:promoImageUrl="@{viewModel.promoImg}" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/promo_img"
+                app:fontFamily="@font/roboto_bold"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{viewModel.promoCode}"
+                android:gravity="center"/>
+
+        </RelativeLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:onClick="@{viewModel::onItemSelected}"
+            android:text="APPLY"
+            app:fontFamily="@font/roboto_bold"
+            android:textColor="@color/clr_FB4A46"
+            android:textSize="@dimen/_15sdp" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/promo_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_13sdp"
+            android:textColor="@color/clr_222B45"
+            android:text="@{viewModel.promoTitle}"
+            app:fontFamily="@font/roboto_bold"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_below="@+id/promo_lay"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/promo_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/clr_FB4A46"
+            android:text="@{viewModel.discountAmount}"
+            app:fontFamily="@font/roboto_regular"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_below="@+id/promo_title"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/promo_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/black"
+            app:fontFamily="@font/roboto_regular"
+            android:visibility="@{viewModel.showDescription?View.GONE:View.VISIBLE}"
+            android:text="@{viewModel.promoDescription}"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_below="@+id/promo_discount"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_2sdp"
+            android:background="@color/clr_trans"
+            android:layout_below="@id/promo_description"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+
+    </RelativeLayout>
+
+</layout>

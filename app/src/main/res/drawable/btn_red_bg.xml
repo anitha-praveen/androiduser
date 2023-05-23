@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_enabled="true" android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#FB4A46" />
+            <solid android:color="#FB4A46" />
+            <corners android:radius="5dp" />
+            <padding android:left="15dp" android:right="15dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="true" android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#F13833" />
+            <solid android:color="#F13833" />
+            <corners android:radius="5dp" />
+            <padding android:left="15dp" android:right="15dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="true" android:state_focused="true">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#F13833" />
+            <solid android:color="#F13833" />
+            <corners android:radius="5dp" />
+            <padding android:left="15dp" android:right="15dp" />
+        </shape>
+    </item>
+
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <stroke android:width="1dp" android:color="#80FB4A46" />
+            <solid android:color="#80FB4A46" />
+            <corners android:radius="5dp" />
+            <padding android:left="15dp" android:right="15dp" />
+        </shape>
+    </item>
+
+</selector>

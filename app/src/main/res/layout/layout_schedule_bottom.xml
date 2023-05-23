@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curved_border_top_white">
+
+    <TextView
+        android:id="@+id/txt_schedule_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/clr_222B45"
+        android:text="Pick-up Time" />
+
+    <TextView
+        android:id="@+id/cancel_booking"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:drawablePadding="@dimen/_5sdp"
+        android:fontFamily="@font/roboto_medium"
+        android:gravity="center"
+        android:text="@string/reset_to_now"
+        android:textColor="@color/clr_FB4A46"
+        android:textSize="@dimen/_14sdp"
+        android:visibility="visible"
+       />
+
+    <RelativeLayout
+        android:background="@drawable/payment_selected_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp">
+
+        <TextView
+            android:id="@+id/txt_schedule_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_toStartOf="@+id/img_schedule_check"
+            android:fontFamily="@font/roboto_medium"
+            android:text="@string/schedule_ride"
+            android:textAllCaps="true"
+            android:textColor="@color/clr_FB4A46"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            android:id="@+id/txt_schedule_text_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_schedule_text_1"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_toStartOf="@+id/img_schedule_check"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Schedule your ride from 30 minutes in advance"
+            android:textAllCaps="true"
+            android:textColor="@color/clr_FB4A46"
+            android:textSize="@dimen/_9sdp" />
+
+        <ImageView
+            android:id="@+id/img_schedule_check"
+            android:layout_width="@dimen/_18sdp"
+            android:layout_height="@dimen/_18sdp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:visibility="gone"
+            app:srcCompat="@drawable/ic_red_check_checked" />
+
+    </RelativeLayout>
+
+
+    <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+        android:id="@+id/schedule_picker"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_175sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        app:picker_curved="true"
+        app:picker_selectedTextColor="@color/clr_222B45"
+        app:picker_selectorColor="@color/white"
+        app:picker_selectorHeight="@dimen/_18sdp" />
+
+    <TextView
+        android:id="@+id/btn_schedule_book"
+        android:background="@drawable/btn_primary"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:textAllCaps="true"
+        android:gravity="center"
+        android:fontFamily="@font/roboto_medium"
+        android:textColor="@color/buttonTextColor"
+        android:textSize="@dimen/_13sdp"
+        android:text="confirm booking" />
+
+</LinearLayout>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/curved_border_top_white">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="20sp"
+        android:text="Save as favorite"
+        android:textColor="@color/clr_2F2E2E"
+        android:fontFamily="@font/roboto_bold"
+        android:layout_marginStart="@dimen/_10sdp"/>
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:textSize="16sp"
+        android:text="sample address"
+        android:textColor="@color/clr_B1B1B1"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginStart="@dimen/_10sdp"/>
+
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:weightSum="3">
+
+        <RadioButton
+            android:id="@+id/radio_button_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:text="Home"/>
+        <RadioButton
+            android:id="@+id/radio_button_work"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:text="Work"/>
+        <RadioButton
+            android:id="@+id/radio_button_other"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/roboto_regular"
+            android:layout_weight="1"
+            android:textSize="15sp"
+            android:text="Other"/>
+    </RadioGroup>
+
+    <EditText
+        android:id="@+id/place_name"
+        android:background="@drawable/edit_text_form"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:paddingStart="@dimen/_15sdp"
+        android:paddingEnd="@dimen/_15sdp"
+        android:maxLength="20"
+        android:inputType="textCapWords"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/clr_222B45"
+        android:textSize="15sp"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:weightSum="2">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cornerRadius="@dimen/_4sdp"
+            android:text="Cancel"
+            android:textSize="16sp"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:backgroundTint="@color/clr_D9D9D9"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:cornerRadius="@dimen/_4sdp"
+            android:text="Save"
+            android:textSize="16sp"
+            android:textColor="@color/buttonTextColor"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:backgroundTint="@color/colorPrimary"/>
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.rating.RatingVM" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/frag_bg">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:elevation="@dimen/_10sdp"
+            app:cardBackgroundColor="@color/frag_bg"
+            app:cardCornerRadius="@dimen/_4sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{viewModel.translationModel.txt_rating}"
+                android:textColor="@color/clr_2F2E2E"
+                android:textSize="16sp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/app_bar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/pro_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="@dimen/_10sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/profile_img"
+                        android:layout_width="@dimen/_50sdp"
+                        android:layout_height="@dimen/_50sdp"
+                        android:scaleType="fitXY"
+                        app:imageUrlFeedback="@{viewModel.driverPic}"
+                        app:srcCompat="@drawable/profile_place_holder" />
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/driver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{viewModel.driverName}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/pro_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/vehical_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.carNumber}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@id/pro_img"
+                    app:layout_constraintTop_toBottomOf="@id/driver_name" />
+
+                <TextView
+                    android:id="@+id/vehical_model"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.carModel}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_10sdp"
+                    app:layout_constraintStart_toEndOf="@id/pro_img"
+                    app:layout_constraintTop_toBottomOf="@id/vehical_num" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/feedback_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:fontFamily="@font/roboto_bold"
+            android:text="@{viewModel.translationModel.txt_improve_driver_exp}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="gone"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_details" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/rating_page"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/_2sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:layout_constraintTop_toBottomOf="@id/feedback_txt"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/txt_trip_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{viewModel.translationModel.txt_how_is_trip}"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    style="?android:attr/ratingBarStyleIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:numStars="5"
+                    android:isIndicator="true"
+                    android:progressBackgroundTint="@color/clr_C4C4C4"
+                    android:progressTint="@color/colorPrimary"
+                    android:scaleX="0.60"
+                    android:scaleY="0.60"
+                    android:rating="@{viewModel.savedRating}"
+                    android:secondaryProgressTint="@color/colorPrimary"
+                    android:stepSize="0.1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txt_trip_status"
+                    android:layout_marginTop="2sp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_2sdp"
+            app:layout_constraintBottom_toTopOf="@id/rating_submit"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rating_page"
+            app:layout_constraintVertical_bias="0.0">
+            <include
+
+                android:id="@+id/progressBar"
+                layout="@layout/progress_dialog"
+                android:visibility="@{viewModel.isLoading() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/questions_recycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/rating_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:background="@drawable/btn_primary"
+            android:fontFamily="@font/roboto_bold"
+            android:minHeight="@dimen/_30sdp"
+            android:onClick="@{viewModel::updateReview}"
+            android:text="@{viewModel.translationModel.text_submit}"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="@dimen/_11sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

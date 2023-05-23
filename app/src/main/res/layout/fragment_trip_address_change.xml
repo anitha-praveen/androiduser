@@ -1,0 +1,225 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.tripAddressChange.TripAddressChangeVM" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true">
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/mapView"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <ImageView
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/road_marker" />
+
+
+        <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/ic_circle"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/ic_back_naviagation_arrow" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="50sp"
+            android:layout_alignBottom="@id/back"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_toEndOf="@+id/back"
+            app:cardBackgroundColor="@color/card_view_bg_color"
+            app:cardCornerRadius="@dimen/_4sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@{viewModel.addressChangeValue==1? viewModel.translationModel.txt_change_pick_address : viewModel.translationModel.txt_change_drop_address}"
+                android:textColor="@color/frag_title_color"
+                android:textSize="16sp" />
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/back"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:cardCornerRadius="@dimen/_6sdp">
+
+            <RelativeLayout
+                android:id="@+id/pickup_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp">
+
+                <ImageView
+                    android:id="@+id/pick_up_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:src="@{viewModel.addressChangeValue==1 ? @drawable/ic_pick_dot : @drawable/ic_red_square}" />
+
+                <EditText
+                    android:id="@+id/pickup_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_toStartOf="@+id/close"
+                    android:layout_toEndOf="@+id/pick_up_dot"
+                    android:afterTextChanged="@{(e)->viewModel.onAddressEdit(e)}"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/roboto_regular"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:text="@={viewModel.address}"
+                    android:textColor="@color/clr_2F2E2E"
+                    android:textSize="@dimen/_11sdp" />
+
+                <ImageView
+                    android:id="@+id/close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:onClick="@{()->viewModel.onClickClear()}"
+                    android:visibility="@{viewModel.showClear?View.VISIBLE:View.GONE}"
+                    android:scaleX="0.75"
+                    android:scaleY="0.75"
+                    android:src="@drawable/ic_close" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/confirm_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:enabled="@{viewModel.enableConfirm}"
+            android:onClick="@{()->viewModel.confirm()}"
+            android:text="@{viewModel.translationModel.txt_confirm}"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="@dimen/_13sdp"
+            app:cornerRadius="@dimen/_5sdp" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/details">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/selectionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:visibility="@{viewModel.showRecyclers?View.VISIBLE:View.GONE}"
+                    app:cardBackgroundColor="@color/card_view_bg_color"
+                    app:cardCornerRadius="@dimen/_6sdp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/addressSearchResultsRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@{viewModel.translationModel.txt_recent}"
+                            android:visibility="@{viewModel.haveRecentLocations?View.VISIBLE:View.GONE}"
+                            android:textColor="@color/darkM_2F2E2E"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recentLocationsRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto_medium"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:text="@{viewModel.translationModel.txt_Fav_side_menu}"
+                            android:visibility="@{viewModel.haveFavorites?View.VISIBLE:View.GONE}"
+                            android:textColor="@color/darkM_2F2E2E"
+                            android:textSize="@dimen/_13sdp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/favoritesRecycler"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"/>
+
+                    </LinearLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+            </RelativeLayout>
+
+
+
+        </ScrollView>
+
+
+
+
+
+    </RelativeLayout>
+</layout>

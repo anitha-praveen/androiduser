@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="limit_phone_number">10</integer>
+    <integer name="limit_first_name">15</integer>
+    <integer name="limit_last_name">15</integer>
+
+</resources>

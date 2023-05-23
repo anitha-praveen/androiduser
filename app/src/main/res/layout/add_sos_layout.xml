@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.addSos.AddSosBottomSheetVM" />
+
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:text="@{viewModel.translationModel.txt_add_emergency}"
+            android:textColor="@color/primary_txt_color"
+            android:textSize="@dimen/_15sdp" />
+
+        <TextView
+            android:id="@+id/sub_heading_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@{viewModel.translationModel.name}"
+            android:textColor="@color/primary_txt_color"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:id="@+id/name_edit"
+            style="@style/EditTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:background="@drawable/rect_curve_black"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:inputType="textEmailAddress"
+            android:layoutDirection="ltr"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:text="@={viewModel.name}"
+            android:textColor="@color/darkM_222B45"
+            android:textColorHint="@color/darkM_8F9BB3"
+            android:textDirection="ltr"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:id="@+id/sub_heading_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@{viewModel.translationModel.hint_phone_number}"
+            android:textColor="@color/primary_txt_color"
+            android:textSize="@dimen/_12sdp" />
+
+        <EditText
+            android:id="@+id/phone_edit"
+            style="@style/EditTextTheme"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:background="@drawable/rect_curve_black"
+            android:digits="9876543210"
+            android:text="@={viewModel.phone}"
+            android:fontFamily="@font/roboto_regular"
+            android:gravity="center_vertical"
+            android:inputType="phone"
+            android:layoutDirection="ltr"
+            android:maxLength="10"
+            android:paddingStart="@dimen/_10sdp"
+            android:paddingEnd="@dimen/_10sdp"
+            android:textColor="@color/darkM_222B45"
+            android:textColorHint="@color/darkM_8F9BB3"
+            android:textDirection="ltr"
+            android:textSize="@dimen/_12sdp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:background="@drawable/primary_curve_rect"
+            android:text="@{viewModel.translationModel.text_submit}"
+            android:textColor="@color/buttonTextColor"
+            android:onClick="@{(v)->viewModel.onclickSubmit(v)}"
+            android:textSize="@dimen/_12sdp" />
+
+
+    </LinearLayout>
+
+</layout>

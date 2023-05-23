@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.waitingProgress.WaitingProgressVM" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/progressBar_lt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_175sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/top_curved_rect">
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_above="@+id/processing_trip"
+                android:progressDrawable="@drawable/circle_primary"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8sdp" />
+
+            <TextView
+                android:id="@+id/processing_trip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/ride_start_soon"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="We are processing your booking..."
+                android:textAllCaps="true"
+                android:textColor="@color/clr_222B45"
+                android:textSize="@dimen/_14sdp" />
+<!--            android:text="@{viewModel.translationModel.txt_we_processing}"-->
+
+            <TextView
+                android:id="@+id/ride_start_soon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/slide_menu"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Your ride will start soon"
+                android:textAllCaps="false"
+                android:textColor="@color/clr_222B45"
+                android:textSize="@dimen/_13sdp" />
+<!--            android:text="@{viewModel.translationModel.txt_ride_start_soon}"-->
+
+            <com.ncorti.slidetoact.SlideToActView
+                android:id="@+id/slide_menu"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
+                app:area_margin="2dp"
+                app:icon_margin="@dimen/_4sdp"
+                app:outer_color="@color/clr_ACB1C0"
+                app:slider_height="@dimen/_35sdp"
+                app:slider_icon="@drawable/close_img"
+                app:slider_reversed="false"
+                app:text="Slide to Cancel"
+                app:text_color="@color/white"
+                app:text_size="@dimen/_12sdp"
+                app:text_style="bold" />
+<!--            app:text="@{viewModel.translationModel.txt_slide_to_cancel}"-->
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+</layout>

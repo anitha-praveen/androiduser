@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:shimmer="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.myRides.cancelled.CancelledHistoryVM" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/darkM_EAEAEA"
+        android:clickable="true"
+        android:focusable="true">
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            shimmer:duration="800">
+
+            <!-- Adding 7 rows of placeholders -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <include layout="@layout/history_list_helper_simmer" />
+
+            </LinearLayout>
+
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--            android:id="@+id/pullToRefresh"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_below="@+id/shimmer_view_container"-->
+<!--            android:layout_height="match_parent">-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_history_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/shimmer_view_container"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:padding="@dimen/_8sdp" />
+
+<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:visibility="@{viewModel.noItemFound?View.VISIBLE:View.GONE}">
+
+            <ImageView
+                android:layout_width="@dimen/_130sdp"
+                android:layout_height="@dimen/_130sdp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_history_no_orders_icon"/>
+
+            <TextView
+                android:id="@+id/show_no_data_found_chl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@{viewModel.translationModel.txt_no_records}"
+                android:textColor="@color/clr_222B45"
+                android:textSize="@dimen/_15sdp" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</layout>

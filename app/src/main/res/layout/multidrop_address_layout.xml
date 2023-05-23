@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/clr_transparent">
+    <ImageView
+        android:layout_below="@+id/dest_pin"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="-12dp"
+        android:layout_centerHorizontal="true"
+        app:srcCompat="@drawable/ic_circle_red_border_white" />
+
+    <RelativeLayout
+        android:id="@+id/dest_pin"
+        android:layout_width="39dp"
+        android:layout_height="57dp"
+        android:background="@drawable/ic_drop_marker">
+
+        <ImageView
+            android:layout_width="19.5dp"
+            android:layout_height="19.5dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="9.75dp"
+            app:srcCompat="@drawable/ic_dest_icon" />
+
+    </RelativeLayout>
+</RelativeLayout>
+
+
+

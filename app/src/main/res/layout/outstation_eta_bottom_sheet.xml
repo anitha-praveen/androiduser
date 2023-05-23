@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/bottom_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:src="@drawable/ic_bottom_sheet_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+    <TextView
+        android:id="@+id/title_out_eta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/primary_txt_color"
+        android:fontFamily="@font/roboto_bold"
+        app:layout_constraintTop_toBottomOf="@id/bottom_image"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAllCaps="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_outStation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:cardBackgroundColor="@color/clr_f7f7f7"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_out_eta"
+        app:cardElevation="@dimen/_10sdp"
+        app:cardCornerRadius="@dimen/_4sdp"
+        android:layout_marginBottom="@dimen/_10sdp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/total_out_eta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/estimated_fare_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_marginBottom="@dimen/_5sdp"
+                android:textColor="@color/clr_gray_light2"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="@dimen/_10sdp"/>
+
+            <TextView
+                android:id="@+id/two_way_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:textColor="@color/clr_gray_light2"
+                android:textSize="@dimen/_10sdp"
+                />
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/show_desc"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_horizontal"-->
+<!--                android:layout_marginTop="@dimen/_10sdp"-->
+<!--                android:layout_marginBottom="@dimen/_10sdp"-->
+<!--                android:fontFamily="@font/roboto_regular"-->
+<!--                android:textAlignment="center"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="@dimen/_10sdp"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toBottomOf="@id/total_out_eta" />-->
+
+            <LinearLayout
+                android:id="@+id/distanceCostLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/distanceCostTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Distance cost"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/clr_525151"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/distanceCostValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="end"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:textColor="@color/clr_000000"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/hillCostLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/hillCostTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Hill station cost"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/clr_525151"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/hillCostValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="end"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:textColor="@color/clr_000000"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/driverCommLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/driverCommTxt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="7"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="Driver commission"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/clr_525151"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/driverCommValue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:gravity="end"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="3"
+                    android:textColor="@color/clr_000000"
+                    android:textSize="@dimen/_12sdp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/desc_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/clr_gray_light2"
+        android:fontFamily="@font/roboto_bold"
+        android:textStyle="bold"
+        android:textSize="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/card_outStation"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layout_constrainedWidth="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        />
+<!--    <TextView-->
+<!--        android:id="@+id/desc_one"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:textSize="@dimen/_9sdp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/desc_title"-->
+<!--        android:layout_marginTop="@dimen/_10sdp"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        />-->
+<!--    <TextView-->
+<!--        android:id="@+id/desc_baseFare"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:textSize="@dimen/_9sdp"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/desc_one"-->
+<!--        android:layout_marginTop="@dimen/_6sdp"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        />-->
+    <TextView
+        android:id="@+id/desc_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_txt_color"
+        android:fontFamily="@font/roboto_regular"
+        android:textSize="@dimen/_9sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintTop_toBottomOf="@id/desc_title"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constrainedWidth="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        />
+<!--    <TextView-->
+<!--        android:id="@+id/desc_three"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:fontFamily="@font/roboto_regular"-->
+<!--        android:layout_marginEnd="@dimen/_10sdp"-->
+<!--        android:textSize="@dimen/_9sdp"-->
+<!--        app:layout_constrainedWidth="true"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/desc_title"-->
+<!--        android:layout_marginTop="@dimen/_6sdp"-->
+<!--        android:layout_marginStart="@dimen/_10sdp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"/>-->
+
+    <TextView
+        android:id="@+id/desc_five"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_txt_color"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constrainedWidth="true"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintTop_toBottomOf="@id/desc_two"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/desc_six"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_txt_color"
+        android:fontFamily="@font/roboto_regular"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:textSize="@dimen/_9sdp"
+        app:layout_constraintTop_toBottomOf="@id/desc_five"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layout_constrainedWidth="true"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+
+    <TextView
+        android:id="@+id/desc_four"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layout_constrainedWidth="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/primary_txt_color"
+        android:textSize="@dimen/_9sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desc_six"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/desc_seven"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        app:layout_constrainedWidth="true"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/primary_txt_color"
+        android:textSize="@dimen/_9sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/desc_four"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

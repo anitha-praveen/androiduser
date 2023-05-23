@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.drawer.DrawerVM" />
+
+        <import type="android.view.View" />
+
+        <import type="com.cloneUser.client.BuildConfig" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/splash_bg"
+            android:fitsSystemWindows="true">
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                android:id="@+id/CoordinatorLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                tools:context="com.cloneUser.client.ui.drawerscreen.DrawerAct">
+
+
+                <RelativeLayout
+                    android:id="@+id/activityMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <include layout="@layout/content_drawer" />
+
+
+                </RelativeLayout>
+
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_fragment"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/nav_graph_drawer" />
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/Widget.Design.NavigationView"
+                android:layout_gravity="start"
+                android:background="@color/card_view_bg_color"
+                android:fitsSystemWindows="true"
+                app:itemHorizontalPadding="@dimen/_20sdp"
+                app:itemIconTint="@color/clr_545353"
+                app:itemTextColor="@color/clr_545353"
+                app:itemTextAppearance="@style/SideMenuFont"
+                app:menu="@menu/activity_drawer_drawer" >
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="bottom"
+                   >
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="@dimen/_10sdp"
+                       android:layout_marginBottom="@dimen/_10sdp"
+                       android:textSize="@dimen/_10sdp"
+                       android:layout_centerVertical="true"
+                       android:textColor="@color/txtColorGray"
+                       android:fontFamily="@font/roboto_regular"
+                       android:text="@{viewModel.versionCode}"/>
+
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_marginStart="@dimen/_10sdp"
+                       android:layout_marginBottom="@dimen/_10sdp"
+                       android:layout_marginEnd="@dimen/_10sdp"
+                       android:textSize="@dimen/_14sdp"
+                       android:layout_centerVertical="true"
+                       android:layout_alignParentEnd="true"
+                       android:textColor="@color/clr_red"
+                       android:fontFamily="@font/roboto_regular"
+                       android:onClick="@{()->viewModel.opensos()}"
+                       android:text="@{viewModel.translationModel.txt_sos}"/>
+
+               </RelativeLayout>
+            </com.google.android.material.navigation.NavigationView>
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+
+    </FrameLayout>
+
+
+</layout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.disclosure.DisclosureVM" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/clr_F2F2F2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+
+            <ImageView
+                android:layout_width="@dimen/_190sdp"
+                android:layout_height="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:src="@drawable/ic_map_location_icon"
+                android:layout_gravity="center"/>
+
+
+                <TextView
+                    android:id="@+id/nice_meet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@{viewModel.heading}"
+                    android:textColor="@color/clr_222B45"
+                    android:textSize="@dimen/_18sdp" />
+
+                <TextView
+                    android:id="@+id/get_move"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/nice_meet"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/roboto_regular"
+                    android:text="@{viewModel.subHeading}"
+                    android:textColor="@color/clr_222B45"
+                    android:textSize="@dimen/_12sdp" />
+
+
+
+
+        </LinearLayout>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/submit_butt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="end"
+            android:onClick="@{()->viewModel.onClickAllow()}"
+            android:orientation="horizontal"
+            app:cardBackgroundColor="@color/clr_FB4A46"
+            app:cardCornerRadius="@dimen/_3sdp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/roboto_medium"
+                android:gravity="center_horizontal"
+                android:padding="@dimen/_8sdp"
+                android:text="Allow"
+                android:textAllCaps="true"
+                android:textColor="@color/buttonTextColor"
+                android:textSize="@dimen/_12sdp" />
+        </androidx.cardview.widget.CardView>
+
+
+    </RelativeLayout>
+</layout>

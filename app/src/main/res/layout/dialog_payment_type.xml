@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.cloneUser.client.dialogs.paymentType.PaymentTypeVM" />
+    </data>
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:background="@color/clr_transparent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="0dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                style="@style/Toolbar"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
+                app:titleTextColor="@color/clr_222B45"
+                app:navigationIcon="@drawable/back_nav" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <TextView
+            android:id="@+id/txt_payment_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/appBarLayout"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:textColor="@color/clr_222B45"
+            android:textSize="@dimen/_20sdp"
+            android:text="@{viewModel.translationModel.txt_pay_methods}" />
+
+        <TextView
+            android:id="@+id/txt_current_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txt_payment_title"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:fontFamily="@font/roboto_medium"
+            android:textAllCaps="true"
+            android:textColor="@color/clr_ACB1C0"
+            android:textSize="13sp"
+            android:text="@{viewModel.translationModel.txt_curr_method}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/payment_method_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_8sdp"
+            android:layout_below="@+id/txt_current_method"
+            android:layout_above="@+id/btn_add_payment_method" />
+
+
+        <Button
+            android:id="@+id/btn_add_payment_method"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:background="@drawable/btn_primary"
+            android:fontFamily="@font/roboto_medium"
+            android:onClick="@{()->viewModel.confirm()}"
+            android:text="@{viewModel.translationModel.txt_add_pay_method}"
+            android:textAllCaps="true"
+            android:textColor="@color/buttonTextColor"
+            android:textSize="@dimen/_12sdp" />
+
+    </RelativeLayout>
+</layout>
